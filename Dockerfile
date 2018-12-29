@@ -3,8 +3,8 @@ FROM ubuntu:18.04
 ENV OPENWRT_VERSION='lede-17.01'
 
 RUN apt-get update && \
-    apt-get install -y build-essential subversion libncurses5-dev zlib1g-dev gawk gcc-multilib && \
-    flex git-core gettext libssl-dev unzip python
+    apt-get install -y build-essential subversion libncurses5-dev zlib1g-dev gawk gcc-multilib \
+        flex git-core gettext libssl-dev unzip python
     
 RUN cd /usr/src && \
     git clone -b "$OPENWRT_VERSION" openwrt && \
