@@ -22,4 +22,4 @@ RUN patch -p1 < ../0001-Zsun.patch
 RUN make defconfig && \
     make download
 
-RUN make -j"$(nproc)" V=s FORCE_UNSAFE_CONFIGURE=1 > /dev/null
+RUN make -j"$(nproc)" FORCE_UNSAFE_CONFIGURE=1
