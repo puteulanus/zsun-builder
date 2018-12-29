@@ -19,6 +19,4 @@ WORKDIR /usr/src/openwrt
 
 RUN patch -p1 < ../0001-Zsun.patch
 
-RUN make oldconfig
-
 RUN make -j"$(nproc)" V=s FORCE_UNSAFE_CONFIGURE=1
