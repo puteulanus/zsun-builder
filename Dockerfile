@@ -13,7 +13,7 @@ RUN cd /usr/src && \
     ./scripts/feeds install -a
 
 ADD 0001-Zsun.patch /usr/src/0001-Zsun.patch
-ADD config.txt diffconfig
+ADD config.txt /usr/src/openwrt/diffconfig
 
 WORKDIR /usr/src/openwrt
 
