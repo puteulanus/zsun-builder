@@ -7,7 +7,7 @@ RUN apt-get update && \
         flex git-core gettext libssl-dev unzip python
     
 RUN cd /usr/src && \
-    git clone -b "$OPENWRT_VERSION" openwrt && \
+    git clone -b "$OPENWRT_VERSION" https://github.com/openwrt/openwrt openwrt && \
     cd openwrt && \
     ./scripts/feeds update -a && \
     ./scripts/feeds install -a
