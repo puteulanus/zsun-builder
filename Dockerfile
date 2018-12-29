@@ -13,14 +13,12 @@ RUN cd /usr/src && \
     ./scripts/feeds install -a
 
 ADD 0001-Zsun.patch /usr/src/0001-Zsun.patch
-ADD config.txt /usr/src/openwrt/diffconfig
+ADD config.txt /usr/src/openwrt/.config
 
 WORKDIR /usr/src/openwrt
 
 RUN patch -p1 < ../0001-Zsun.patch
 
-RUN make defconfig && \
-    cat diffconfig >> .config && \
-    make defconfig
+RUN make defconfig
 
 RUN make -j"$(nproc)" V=s FORCE_UNSAFE_CONFIGURE=1
