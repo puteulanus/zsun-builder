@@ -21,4 +21,4 @@ RUN patch -p1 < ../0001-Zsun.patch
 
 RUN make defconfig
 
-RUN make -j1 V=s FORCE_UNSAFE_CONFIGURE=1
+RUN make -j1 V=s FORCE_UNSAFE_CONFIGURE=1 > /dev/null
