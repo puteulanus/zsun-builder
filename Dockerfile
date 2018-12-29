@@ -4,7 +4,7 @@ ENV OPENWRT_VERSION='lede-17.01'
 
 RUN apt-get update && \
     apt-get install -y build-essential subversion libncurses5-dev zlib1g-dev gawk gcc-multilib \
-        flex git-core gettext libssl-dev unzip python
+        flex git-core gettext libssl-dev unzip python wget
     
 RUN cd /usr/src && \
     git clone -b "$OPENWRT_VERSION" https://github.com/openwrt/openwrt openwrt && \
