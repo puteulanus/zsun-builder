@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV OPENWRT_VERSION='lede-17.01'
+ENV OPENWRT_VERSION='openwrt-18.06'
 
 RUN apt-get update && \
     apt-get install -y build-essential subversion libncurses5-dev zlib1g-dev gawk gcc-multilib \
@@ -21,4 +21,4 @@ RUN patch -p1 < ../0001-Zsun.patch
 
 RUN make defconfig
 
-RUN make -j"$(nproc)" V=s FORCE_UNSAFE_CONFIGURE=1
+RUN make -j1 V=s FORCE_UNSAFE_CONFIGURE=1
