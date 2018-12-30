@@ -19,8 +19,6 @@ ADD config.txt /usr/src/openwrt/.config
 
 WORKDIR /usr/src/openwrt
 
-RUN patch -p1 < ../0001-Zsun.patch
-
 RUN make defconfig && \
     make download
 
