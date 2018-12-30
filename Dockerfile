@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV OPENWRT_VERSION='openwrt-18.06'
+ENV OPENWRT_VERSION='v18.06.1'
 
 RUN apt-get update && \
     apt-get install -y build-essential subversion libncurses5-dev zlib1g-dev gawk gcc-multilib \
