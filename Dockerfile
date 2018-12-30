@@ -4,7 +4,7 @@ ENV OPENWRT_VERSION='v18.06.1'
 
 RUN apt-get update && \
     apt-get install -y build-essential subversion libncurses5-dev zlib1g-dev gawk gcc-multilib \
-        flex git-core gettext libssl-dev unzip python wget
+        flex git-core gettext libssl-dev unzip python wget time
     
 ADD 0001-Zsun.patch /usr/src/0001-Zsun.patch
     
