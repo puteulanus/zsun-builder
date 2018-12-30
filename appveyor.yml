@@ -1,0 +1,16 @@
+image:
+  - ubuntu
+
+platform:
+  - x64
+
+services:
+  - docker
+
+build_script:
+  - docker build -t build .
+  - mkdir build_dir
+  - docker run -v ./build_dir:/mnt/build_dir build cp -r /usr/src/openwrt/bin/targets/ar71xx/generic/* /mnt/build_dir/
+
+artifacts:
+  - path: build_dir/*
