@@ -57,3 +57,9 @@ CONFIG_PACKAGE_luci-base=y
 CONFIG_PACKAGE_luci-mod-admin-full=y
 # CONFIG_KERNEL_CC_OPTIMIZE_FOR_PERFORMANCE is not set
 CONFIG_KERNEL_CC_OPTIMIZE_FOR_SIZE=y
+# CONFIG_PACKAGE_kmod-ath9k is not set
+# CONFIG_PACKAGE_kmod-mac80211 is not set
+# CONFIG_PACKAGE_kmod-ath is not set
+# CONFIG_KERNEL_SWAP is not set
+# CONFIG_KERNEL_MAGIC_SYSRQ is not set
+# CONFIG_KERNEL_PRINTK_TIME is not set
