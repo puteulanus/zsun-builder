@@ -22,4 +22,8 @@ WORKDIR /usr/src/openwrt
 RUN make defconfig && \
     make download
 
-RUN make -j"$(nproc)" V=s FORCE_UNSAFE_CONFIGURE=1
+RUN make -j"$(nproc)" FORCE_UNSAFE_CONFIGURE=1
+
+EXPOSE 80
+
+CMD python -m SimpleHTTPServer 80
