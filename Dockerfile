@@ -23,13 +23,12 @@ RUN make defconfig && \
     make download
 
 RUN make -j"$(nproc)" FORCE_UNSAFE_CONFIGURE=1 && \
-    cp -r bin /root/openwrt && \
-    rm -rf /usr/src/openwrt
+    rm -rf build_dir
 
 
 FROM alpine
 
-COPY --from=BUILD /root/openwrt /root/openwrt
+COPY --from=BUILD /usr/src/openwrt/bin /root/openwrt
 
 RUN apk --no-cache add python
 WORKDIR /root/openwrt
