@@ -19,11 +19,11 @@ build_script:
 
 artifacts:
   - path: build_dir/zsun/targets/ar71xx/generic/*.bin
-  - name: images
+    name: images
   
   - path: build_dir/zsun/targets/ar71xx/generic/*.tar.xz
-  - name: builder
+    name: builder
   
   - path: build_dir/zsun/packages
-  - name: packages
-  - type: zip
+    name: packages
+    type: zip
