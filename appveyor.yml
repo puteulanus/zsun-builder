@@ -15,7 +15,7 @@ build_script:
   - docker pull quay.io/puteulanus/zsun-builder
   - docker tag quay.io/puteulanus/zsun-builder build
   - mkdir build_dir
-  - docker run -v `pwd`/build_dir:/mnt/build_dir build cp -r /root/openwrt/* /mnt/build_dir/
+  - docker run -v `pwd`/build_dir:/mnt/build_dir build cp -r /root/openwrt /mnt/build_dir/zsun
 
 artifacts:
   - path: build_dir/*
