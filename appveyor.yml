@@ -16,14 +16,12 @@ build_script:
   - docker tag quay.io/puteulanus/zsun-builder build
   - mkdir build_dir
   - docker run -v `pwd`/build_dir:/mnt/build_dir build cp -r /root/openwrt /mnt/build_dir/zsun
+  - cp build_dir/zsun/targets/ar71xx/generic/*.bin ./
+  - cp build_dir/zsun/targets/ar71xx/generic/*.tar.xz ./
 
 artifacts:
-  - path: build_dir/zsun/targets/ar71xx/generic/*.bin
+  - path: '*.bin'
     name: images
   
-  - path: build_dir/zsun/targets/ar71xx/generic/*.tar.xz
+  - path: '*.tar.xz'
     name: builder
-  
-  - path: build_dir/zsun/packages
-    name: packages
-    type: zip
