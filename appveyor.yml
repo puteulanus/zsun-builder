@@ -6,11 +6,16 @@ platform:
 
 services:
   - docker
+  
+branches:
+  except:
+    - /.*/
 
 build_script:
-  - docker build -t build .
+  - docker pull quay.io/puteulanus/zsun-builder
+  - docker tag quay.io/puteulanus/zsun-builder build
   - mkdir build_dir
-  - docker run -v ./build_dir:/mnt/build_dir build cp -r /usr/src/openwrt/bin/targets/ar71xx/generic/* /mnt/build_dir/
+  - docker run -v `pwd`/build_dir:/mnt/build_dir build cp -r /root/openwrt/* /mnt/build_dir/
 
 artifacts:
   - path: build_dir/*
