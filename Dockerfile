@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:18.04 as BUILD
 
 ENV OPENWRT_VERSION='v18.06.1'
 
@@ -22,8 +22,15 @@ WORKDIR /usr/src/openwrt
 RUN make defconfig && \
     make download
 
-RUN make -j"$(nproc)" V=s FORCE_UNSAFE_CONFIGURE=1
+RUN make -j"$(nproc)" FORCE_UNSAFE_CONFIGURE=1 && \
+    rm -rf build_dir
 
+
+FROM alpine
+
+COPY --from=BUILD /usr/src/openwrt/bin /root/openwrt
+
+RUN apk --no-cache add python
+WORKDIR /root/openwrt
 EXPOSE 80
-
 CMD python -m SimpleHTTPServer 80
