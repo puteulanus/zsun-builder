@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:18.04 as BUILD
 
 ENV OPENWRT_VERSION='lede-17.01'
 
@@ -24,6 +24,12 @@ RUN make defconfig && \
 
 RUN make -j"$(nproc)" FORCE_UNSAFE_CONFIGURE=1
 
-EXPOSE 80
 
+FROM alpine
+
+COPY --from=BUILD /usr/src/openwrt /root/openwrt
+
+RUN apk --no-cache add python
+WORKDIR /root/openwrt
+EXPOSE 80
 CMD python -m SimpleHTTPServer 80
