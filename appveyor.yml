@@ -18,6 +18,8 @@ build_script:
   - docker run -v `pwd`/build_dir:/mnt/build_dir build cp -r /root/openwrt /mnt/build_dir/zsun
   - cp build_dir/zsun/targets/ar71xx/generic/*.bin ./
   - cp build_dir/zsun/targets/ar71xx/generic/*.tar.xz ./
+  - md5sum *sysupgrade.bin > md5.txt
+  - sha256sum *sysupgrade.bin > sha256.txt
 
 artifacts:
   - path: '*.bin'
@@ -25,3 +27,6 @@ artifacts:
   
   - path: '*.tar.xz'
     name: builder
+    
+  - path: '*.txt'
+    name: hash
