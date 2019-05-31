@@ -22,7 +22,7 @@ WORKDIR /usr/src/openwrt
 RUN make defconfig && \
     make download
 
-RUN make -j"$(nproc)" FORCE_UNSAFE_CONFIGURE=1 && \
+RUN make -j"$(nproc)" FORCE_UNSAFE_CONFIGURE=1 V=s && \
     rm -rf build_dir
 
 
