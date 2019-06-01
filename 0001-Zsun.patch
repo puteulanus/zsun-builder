@@ -321,11 +321,11 @@ index d978dec..54b2f0f 100644
 +define Device/zsun-sdreader
 +  DEVICE_TITLE := ZSUN WiFi SD Card Reader
 +  BOARDNAME := ZSUN-SDREADER
-+  ROOTFS_SIZE := 14912k
-+  KERNEL_SIZE := 1216k
++  ROOTFS_SIZE := 14080k
++  KERNEL_SIZE := 2048k
 +  IMAGE_SIZE := 16128k
 +  CONSOLE := ttyATH0,115200
-+  MTDPARTS := spi0.0:64k(u-boot)ro,64k(u-boot-env)ro,14912k(rootfs),1216k(kernel),64k(nvram),64k(art),16128k@0x20000(firmware) 
++  MTDPARTS := spi0.0:64k(u-boot)ro,64k(u-boot-env)ro,14080k(rootfs),2048k(kernel),64k(nvram),64k(art),16128k@0x20000(firmware) 
 +  IMAGES := sysupgrade.bin
 +  IMAGE/sysupgrade.bin = append-rootfs | pad-rootfs | pad-to $$$$(ROOTFS_SIZE) | append-kernel | check-size $$$$(IMAGE_SIZE)
 +endef
