@@ -28,6 +28,7 @@ build_script:
   - cp build_dir-2/zsun/targets/ar71xx/generic/*.tar.xz ./
   - md5sum build_dir-2/zsun/targets/ar71xx/generic/*sysupgrade.bin > openwrt-md5.txt
   - sha256sum build_dir-2/zsun/targets/ar71xx/generic/*sysupgrade.bin > openwrt-sha256.txt
+  - rm -rf *vmlinux.bin *uImage-lzma.bin config.txt
 
 artifacts:
   - path: '*.bin'
