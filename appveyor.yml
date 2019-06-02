@@ -18,8 +18,16 @@ build_script:
   - docker run -v `pwd`/build_dir:/mnt/build_dir build cp -r /root/openwrt /mnt/build_dir/zsun
   - cp build_dir/zsun/targets/ar71xx/generic/*.bin ./
   - cp build_dir/zsun/targets/ar71xx/generic/*.tar.xz ./
-  - md5sum *sysupgrade.bin > md5.txt
-  - sha256sum *sysupgrade.bin > sha256.txt
+  - md5sum build_dir/zsun/targets/ar71xx/generic/*sysupgrade.bin > lede-md5.txt
+  - sha256sum build_dir/zsun/targets/ar71xx/generic/*sysupgrade.bin > lede-sha256.txt
+  - docker pull quay.io/puteulanus/zsun-builder:18.06
+  - docker tag quay.io/puteulanus/zsun-builder:18.06 build-2
+  - mkdir build_dir-2
+  - docker run -v `pwd`/build_dir-2:/mnt/build_dir build-2 cp -r /root/openwrt /mnt/build_dir/zsun
+  - cp build_dir-2/zsun/targets/ar71xx/generic/*.bin ./
+  - cp build_dir-2/zsun/targets/ar71xx/generic/*.tar.xz ./
+  - md5sum build_dir-2/zsun/targets/ar71xx/generic/*sysupgrade.bin > openwrt-md5.txt
+  - sha256sum build_dir-2/zsun/targets/ar71xx/generic/*sysupgrade.bin > openwrt-sha256.txt
 
 artifacts:
   - path: '*.bin'
