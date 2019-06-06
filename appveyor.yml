@@ -16,8 +16,9 @@ build_script:
   - docker tag quay.io/puteulanus/zsun-builder build
   - mkdir build_dir
   - docker run -v `pwd`/build_dir:/mnt/build_dir build cp -r /root/openwrt /mnt/build_dir/zsun
-  - cp build_dir/zsun/targets/ar71xx/generic/*.bin ./
-  - cp build_dir/zsun/targets/ar71xx/generic/*.tar.xz ./
+  - cp build_dir/zsun/targets/ar71xx/generic/lede-ar71xx-generic-zsun-sdreader-squashfs-sysupgrade.bin ./
+  - cp build_dir/zsun/targets/ar71xx/generic/openwrt-imagebuilder*.tar.xz ./openwrt-imagebuilder.tar.xz
+  - cp build_dir/zsun/targets/ar71xx/generic/openwrt-sdk*.tar.xz ./openwrt-sdk.tar
   - md5sum build_dir/zsun/targets/ar71xx/generic/*sysupgrade.bin > lede-md5.txt
   - sha256sum build_dir/zsun/targets/ar71xx/generic/*sysupgrade.bin > lede-sha256.txt
   - docker pull quay.io/puteulanus/zsun-builder:18.06
@@ -33,10 +34,11 @@ build_script:
   - mkdir build_dir-3
   - docker run -v `pwd`/build_dir-3:/mnt/build_dir build-3 cp -r /root/openwrt /mnt/build_dir/zsun
   - cp build_dir-3/zsun/targets/ar71xx/generic/openwrt-ar71xx-generic-zsun-sdreader-squashfs-sysupgrade.bin ./openwrt_rec-ar71xx-generic-zsun-sdreader-squashfs-sysupgrade.bin
-  - cp build_dir-3/zsun/targets/ar71xx/generic/*.tar.xz ./
+  - cp build_dir-3/zsun/targets/ar71xx/generic/openwrt-imagebuilder*.tar.xz ./openwrt_rec-imagebuilder.tar.xz
+  - cp build_dir-3/zsun/targets/ar71xx/generic/openwrt-sdk*.tar.xz ./openwrt_rec-sdk.tar
   - md5sum build_dir-3/zsun/targets/ar71xx/generic/*sysupgrade.bin > openwrt_rec-md5.txt
   - sha256sum build_dir-3/zsun/targets/ar71xx/generic/*sysupgrade.bin > openwrt_rec-sha256.txt
-  - rm -rf *vmlinux.bin *uImage-lzma.bin config.txt
+  - rm -rf config.txt
 
 artifacts:
   - path: 'openwrt-ar71xx-generic-zsun-sdreader-squashfs-sysupgrade.bin'
