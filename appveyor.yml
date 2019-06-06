@@ -17,8 +17,7 @@ build_script:
   - mkdir build_dir
   - docker run -v `pwd`/build_dir:/mnt/build_dir build cp -r /root/openwrt /mnt/build_dir/zsun
   - cp build_dir/zsun/targets/ar71xx/generic/lede-ar71xx-generic-zsun-sdreader-squashfs-sysupgrade.bin ./
-  - cp build_dir/zsun/targets/ar71xx/generic/openwrt-imagebuilder*.tar.xz ./openwrt-imagebuilder.tar.xz
-  - cp build_dir/zsun/targets/ar71xx/generic/openwrt-sdk*.tar.xz ./openwrt-sdk.tar
+  - cp build_dir/zsun/targets/ar71xx/generic/*.tar.xz ./
   - md5sum build_dir/zsun/targets/ar71xx/generic/*sysupgrade.bin > lede-md5.txt
   - sha256sum build_dir/zsun/targets/ar71xx/generic/*sysupgrade.bin > lede-sha256.txt
   - docker pull quay.io/puteulanus/zsun-builder:18.06
@@ -26,7 +25,8 @@ build_script:
   - mkdir build_dir-2
   - docker run -v `pwd`/build_dir-2:/mnt/build_dir build-2 cp -r /root/openwrt /mnt/build_dir/zsun
   - cp build_dir-2/zsun/targets/ar71xx/generic/openwrt-ar71xx-generic-zsun-sdreader-squashfs-sysupgrade.bin ./
-  - cp build_dir-2/zsun/targets/ar71xx/generic/*.tar.xz ./
+  - cp build_dir-2/zsun/targets/ar71xx/generic/openwrt-imagebuilder*.tar.xz ./openwrt-imagebuilder.tar.xz
+  - cp build_dir-2/zsun/targets/ar71xx/generic/openwrt-sdk*.tar.xz ./openwrt-sdk.tar
   - md5sum build_dir-2/zsun/targets/ar71xx/generic/*sysupgrade.bin > openwrt-md5.txt
   - sha256sum build_dir-2/zsun/targets/ar71xx/generic/*sysupgrade.bin > openwrt-sha256.txt
   - docker pull quay.io/puteulanus/zsun-builder:18.06_rec
